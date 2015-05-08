@@ -20,6 +20,14 @@ public class SessaoTest {
 		
 		Assert.assertTrue(sessao.podeReservar(5));
 	}
+	
+	@Test
+	public void deveVender3ingressosSeHa3vagas() throws Exception {
+		Sessao sessao = new Sessao();
+		sessao.setTotalIngressos(3);
+		
+		Assert.assertTrue(sessao.podeReservar(3));
+	}
 
 	@Test
 	public void naoDeveVender3ingressoSeHa2vagas() throws Exception {
