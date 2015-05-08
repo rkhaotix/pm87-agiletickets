@@ -1,6 +1,10 @@
 Agile Tickets
 =============
 
+Desenvolvedor principal
+-----------------------
+Raphael A. Silva
+
 Começando a desenvolver
 -----------------------
 
