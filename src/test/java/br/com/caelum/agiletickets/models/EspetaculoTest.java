@@ -120,5 +120,16 @@ public class EspetaculoTest {
 		}
 	}
 	
+	@Test
+	public void criarUmaSessaoSemanalIniciaHojeETerminaAmanha() {
+		Espetaculo esp = new Espetaculo();
+		LocalDate inicio = new LocalDate();
+		LocalDate amanha = inicio.plusDays(1);
+		LocalTime agora = new LocalTime();
+		
+		List<Sessao> sessoes=esp.criaSessoes(inicio, amanha, agora, Periodicidade.SEMANAL);
 	
+		Assert.assertEquals(1, sessoes.size());
+		Assert.assertEquals(inicio.toDateTime(agora), sessoes.get(0).getInicio());
+	}
 }
