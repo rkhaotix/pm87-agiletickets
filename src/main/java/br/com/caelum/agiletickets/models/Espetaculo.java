@@ -103,15 +103,20 @@ public class Espetaculo {
 		List<Sessao> sessoes = new ArrayList<Sessao>();
 		Sessao sessao = null;
 		int qtdDias=Days.daysBetween(inicio, fim).getDays() + 1;
+		int incDias = periodicidade==Periodicidade.DIARIA ? 1 : 7;
+		LocalDate proximo = inicio;
 		
 		for (int dia = 0; dia < qtdDias; dia++) {
-			sessao=new Sessao();
+			sessao = new Sessao();
 			sessao.setEspetaculo(this);
-			sessao.setInicio(inicio.toDateTime(horario));
+			sessao.setInicio(proximo.toDateTime(horario));
 			sessoes.add(sessao);
-			inicio.plusDays(1);
+			proximo = proximo.plusDays(incDias);
+			if(proximo.isAfter(fim)){
+				break;
+			}
 		}
-		
+
 		return sessoes;
 	}
 	

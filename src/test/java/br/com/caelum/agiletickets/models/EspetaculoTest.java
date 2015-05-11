@@ -108,6 +108,7 @@ public class EspetaculoTest {
 		LocalDate inicio = new LocalDate();
 		LocalDate fim = inicio.plusDays(2);
 		LocalTime agora = new LocalTime();
+		LocalDate proximo = inicio;
 		
 		List<Sessao> sessoes=esp.criaSessoes(inicio, fim, agora, Periodicidade.DIARIA);
 	
@@ -115,8 +116,8 @@ public class EspetaculoTest {
 		
 		for(Sessao sessao : sessoes)
 		{
-			Assert.assertEquals(inicio.toDateTime(agora), sessao.getInicio());
-			inicio.plusDays(1);
+			Assert.assertEquals(proximo.toDateTime(agora), sessao.getInicio());
+			proximo = proximo.plusDays(1);
 		}
 	}
 	
