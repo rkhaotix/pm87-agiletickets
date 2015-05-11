@@ -106,10 +106,9 @@ public class EspetaculoTest {
 	public void criar3SessoesDiariasQuandoComecaHojeETerminaDepoisDeAmanha() {
 		Espetaculo esp = new Espetaculo();
 		LocalDate inicio = new LocalDate();
-		LocalDate fim = new LocalDate();
+		LocalDate fim = inicio.plusDays(2);
 		LocalTime agora = new LocalTime();
 		
-		fim.plusDays(3);
 		List<Sessao> sessoes=esp.criaSessoes(inicio, fim, agora, Periodicidade.DIARIA);
 	
 		Assert.assertEquals(3, sessoes.size());
@@ -120,4 +119,6 @@ public class EspetaculoTest {
 			inicio.plusDays(1);
 		}
 	}
+	
+	
 }
