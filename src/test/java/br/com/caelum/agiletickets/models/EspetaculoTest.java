@@ -101,5 +101,23 @@ public class EspetaculoTest {
 		Assert.assertEquals(1, sessoes.size());
 		Assert.assertEquals(hoje.toDateTime(agora), sessoes.get(0).getInicio());
 	}
+
+	@Test
+	public void criar3SessoesDiariasQuandoComecaHojeETerminaDepoisDeAmanha() {
+		Espetaculo esp = new Espetaculo();
+		LocalDate inicio = new LocalDate();
+		LocalDate fim = new LocalDate();
+		LocalTime agora = new LocalTime();
+		
+		fim.plusDays(3);
+		List<Sessao> sessoes=esp.criaSessoes(inicio, fim, agora, Periodicidade.DIARIA);
 	
+		Assert.assertEquals(3, sessoes.size());
+		
+		for(Sessao sessao : sessoes)
+		{
+			Assert.assertEquals(inicio.toDateTime(agora), sessao.getInicio());
+			inicio.plusDays(1);
+		}
+	}
 }
